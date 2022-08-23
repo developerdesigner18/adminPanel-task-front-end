@@ -1,0 +1,248 @@
+
+<div style="display: flex;">
+  <h3>Product</h3>
+  <button class="btnAddCat" type="button" data-toggle="modal" data-target="#exampleModal">Add Product</button>
+  <!-- <button class="btnAddCat" type="button" (click)="open(mymodal)">Add Category</button> -->
+</div>
+
+<table class="table table-bordered cat_table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Category</th>
+      <th scope="col" colspan="2">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of datas">
+      <th scope="row">{{data.name}}</th>
+      <th scope="row">{{data.price}}</th>
+      <th scope="row">{{data.category}}</th>
+      <td><i class='fas fa-trash-alt' style='font-size:20px;color:black' (click)="deleteproduct(data._id)"></i></td>
+      <td><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:black" (click)="editData(data._id)"></i></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div class="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <form [formGroup]="productForm"
+        >
+          <div
+          class="form-control-group"
+          [ngClass]="{ 'has-error': submitted && formControls.name.errors }"
+        >
+          <label for="input-name" class="label">Product Name:</label>
+          <input
+            nbinput=""
+            fullwidth=""
+            formControlName="name"
+            [class.is-invalid]="
+              productForm.get('name').invalid && productForm.get('name').touched
+            "
+            name="name"
+            id="input-name"
+            placeholder="category Name "
+            fieldsize="large"
+            autofocus=""
+            ng-reflect-full-width=""
+            ng-reflect-field-size="large"
+            ng-reflect-name="name"
+            ng-reflect-status="basic"
+            ng-reflect-required="true"
+            class="input-full-width size-large status-basic shape-rectangle ng-pristine ng-invalid nb-transition ng-touched"
+            required=""
+            aria-invalid="true"
+          />
+          <div *ngIf="submitted && formControls.name.errors">
+            <div *ngIf="formControls.name.errors.required" class="error">
+              Product Name is required.
+            </div>
+            <div *ngIf="formControls.name.errors?.pattern" class="error">
+              Product Name is not valid.
+            </div>
+          </div>
+        </div>
+          <div
+          class="form-control-group"
+          [ngClass]="{ 'has-error': submitted && formControls.price.errors }"
+        >
+          <label for="input-price" class="label">Product Price:</label>
+          <input
+          type="number"
+            nbinput=""
+            fullwidth=""
+            formControlName="price"
+            [class.is-invalid]="
+              productForm.get('price').invalid && productForm.get('price').touched
+            "
+            name="price"
+            id="input-price"
+            placeholder="Product Price"
+            fieldsize="large"
+            autofocus=""
+            ng-reflect-full-width=""
+            ng-reflect-field-size="large"
+            ng-reflect-name="name"
+            ng-reflect-status="basic"
+            ng-reflect-required="true"
+            class="input-full-width size-large status-basic shape-rectangle ng-pristine ng-invalid nb-transition ng-touched"
+            required=""
+            aria-invalid="true"
+          />
+          <div *ngIf="submitted && formControls.price.errors">
+            <div *ngIf="formControls.price.errors.required" class="error">
+              Product Price is required.
+            </div>
+          </div>
+        </div>
+          <div
+          class="form-control-group"
+          [ngClass]="{ 'has-error': submitted && formControls.price.errors }"
+        >
+          <label for="input-price" class="label">Product Category</label>
+          <select class="form-select" aria-label="Default select example" formControlName="category"
+          [class.is-invalid]="
+            productForm.get('category').invalid && productForm.get('category').touched
+          " >
+            <option selected disabled>select category</option>
+            <option *ngFor="let item of categories" value="{{item}}">{{item}}</option>
+          </select>
+          <div *ngIf="submitted && formControls.price.errors">
+            <div *ngIf="formControls.price.errors.required" class="error">
+              Product Category is required.
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+        </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <form [formGroup]="productForm"
+        >
+          <div
+          class="form-control-group"
+          [ngClass]="{ 'has-error': submitted && formControls.name.errors }"
+        >
+          <label for="input-name" class="label">Product Name:</label>
+          <input
+            nbinput=""
+            fullwidth=""
+            formControlName="name"
+            [class.is-invalid]="
+              productForm.get('name').invalid && productForm.get('name').touched
+            "
+            name="name"
+            id="input-name"
+            placeholder="category Name "
+            fieldsize="large"
+            autofocus=""
+            ng-reflect-full-width=""
+            ng-reflect-field-size="large"
+            ng-reflect-name="name"
+            ng-reflect-status="basic"
+            ng-reflect-required="true"
+            class="input-full-width size-large status-basic shape-rectangle ng-pristine ng-invalid nb-transition ng-touched"
+            required=""
+            aria-invalid="true"
+          />
+          <div *ngIf="submitted && formControls.name.errors">
+            <div *ngIf="formControls.name.errors.required" class="error">
+              Product Name is required.
+            </div>
+            <div *ngIf="formControls.name.errors?.pattern" class="error">
+              Product Name is not valid.
+            </div>
+          </div>
+        </div>
+          <div
+          class="form-control-group"
+          [ngClass]="{ 'has-error': submitted && formControls.price.errors }"
+        >
+          <label for="input-price" class="label">Product Price:</label>
+          <input
+          type="number"
+            nbinput=""
+            fullwidth=""
+            formControlName="price"
+            [class.is-invalid]="
+              productForm.get('price').invalid && productForm.get('price').touched
+            "
+            name="price"
+            id="input-price"
+            placeholder="Product Price"
+            fieldsize="large"
+            autofocus=""
+            ng-reflect-full-width=""
+            ng-reflect-field-size="large"
+            ng-reflect-name="name"
+            ng-reflect-status="basic"
+            ng-reflect-required="true"
+            class="input-full-width size-large status-basic shape-rectangle ng-pristine ng-invalid nb-transition ng-touched"
+            required=""
+            aria-invalid="true"
+          />
+          <div *ngIf="submitted && formControls.price.errors">
+            <div *ngIf="formControls.price.errors.required" class="error">
+              Product Price is required.
+            </div>
+          </div>
+        </div>
+          <div
+          class="form-control-group"
+          [ngClass]="{ 'has-error': submitted && formControls.price.errors }"
+        >
+          <label for="input-price" class="label">Product Category</label>
+          <select class="form-select" aria-label="Default select example" formControlName="category"
+          [class.is-invalid]="
+            productForm.get('category').invalid && productForm.get('category').touched
+          " >
+            <option selected disabled>select category</option>
+            <option *ngFor="let item of categories" value="{{item}}">{{item}}</option>
+          </select>
+          <div *ngIf="submitted && formControls.price.errors">
+            <div *ngIf="formControls.price.errors.required" class="error">
+              Product Category is required.
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="EditProduct()">Edit changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+        </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

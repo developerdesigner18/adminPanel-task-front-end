@@ -1,0 +1,71 @@
+<h1 id="title" class="title">Login</h1>
+<p class="sub-title">Hello! Log in with your email.</p>
+
+<form (ngSubmit)="login()"  aria-labelledby="title">
+
+  <div class="form-control-group">
+    <label class="label" for="input-email">Email address:</label>
+    <input nbInput
+           fullWidth
+           name="email"
+           id="input-email"
+           pattern=".+@.+\..+"
+           placeholder="Email address"
+           fieldSize="large"
+           autofocus
+           >
+           <!-- [attr.aria-invalid]="email.invalid && email.touched ? true : null" -->
+    <!-- <ng-container *ngIf="email.invalid && email.touched">
+      <p class="caption status-danger" *ngIf="email.errors?.required">
+        Email is required!
+      </p>
+      <p class="caption status-danger" *ngIf="email.errors?.pattern">
+        Email should be the real one!
+      </p>
+    </ng-container> -->
+  </div>
+
+  <div class="form-control-group">
+    <span class="label-with-link">
+      <label class="label" for="input-password">Password:</label>
+      <!-- <a class="forgot-password caption-2" routerLink="../request-password">Forgot Password?</a> -->
+    </span>
+    <input nbInput
+           fullWidth
+           name="password"
+           type="password"
+           id="input-password"
+           placeholder="Password"
+           fieldSize="large"
+           >
+           <!-- [attr.aria-invalid]="password.invalid && password.touched ? true : null" -->
+    <!-- <ng-container *ngIf="password.invalid && password.touched ">
+      <p class="caption status-danger" *ngIf="password.errors?.required">
+        Password is required!
+      </p>
+      <p class="caption status-danger" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+        Password should contain
+        from {{ getConfigValue('forms.validation.password.minLength') }}
+        to {{ getConfigValue('forms.validation.password.maxLength') }}
+        characters
+      </p>
+    </ng-container> -->
+  </div>
+
+  <div class="form-control-group accept-group">
+    <nb-checkbox name="rememberMe" [(ngModel)]="user.rememberMe" *ngIf="rememberMe">Remember me</nb-checkbox>
+  </div>
+
+  <button nbButton
+          fullWidth
+          status="primary"
+          size="large"
+          [class.btn-pulse]="submitted">
+          Log In
+        </button>
+        <!-- [disabled]="submitted || !form.valid" -->
+</form>
+
+<section class="another-action" aria-label="Register">
+  Don't have an account? <a class="text-link" routerLink="../register">Register</a>
+</section>
