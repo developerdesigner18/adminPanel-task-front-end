@@ -15,6 +15,7 @@ export class CategoryComponent implements OnInit {
   submitted = false;
   datas:any;
   id: any;
+  role: any;
   constructor(private fb: FormBuilder,
     public authService: AuthService,
     public router: Router,private toastrService: NbToastrService) {
@@ -33,6 +34,16 @@ export class CategoryComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    let id = localStorage.getItem("_id")
+    this.authService.getProfileData(id).subscribe({
+      next:(res)=>{
+        this.role = res.data.role
+      },
+      error:(error)=>{
+        console.log("error",error);
+
+      }
+    })
     this.getCategoryData()
   }
   get formControls() { return this.Cat_Form.controls; }

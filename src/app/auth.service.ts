@@ -83,44 +83,7 @@ export class AuthService {
       return this.httpClient.get(`${environment.apiUrl}/auth/getuser/${_id}`)
     }
 
-  //   login(email: string, password: string) {
-  //     return this.httpClient
-  //       .post<any>(`${environment.apiUrl}/auth/signin`, {
-  //         email: email,
-  //         password: password,
-  //       })
-  //       .pipe(
-  //         map((user) => {
-  //           // if (user && user.token && user.data.role === 'admin') {
-  //           if (user && user.token) {
-  //             localStorage.setItem('adminUser', JSON.stringify(user));
-  //             localStorage.setItem('admintoken', user.token);
-  //             this.router.navigate(['/pages/dashboard'])
-  //           } else {
-  //             this.toastrService.danger('You have not authorized to login admin panel.')
-  //           }
-  //           return user || {};
-  //         }),
-  //         catchError(this.handleError.bind(this))
-  //       );
-  //   }
-
-  // logOut(): any{
-  //   localStorage.removeItem('adminUser');
-  //   localStorage.removeItem('admintoken');
-  //   // window.location.replace('');
-  //   this.router.navigate(['login'])
-  // }
-
-  // private handleError(error: HttpErrorResponse) {
-  //   let msg = '';
-  //   if(error.status === 500){
-  //     this.toastrService.danger('Authentication is failed. Please check your email and paswword.')
-  //   } else if(error.status === 422){
-  //     this.toastrService.danger('Email id is already exist.')
-  //   } else {
-  //     this.toastrService.danger('Error occured!')
-  //   }
-  //   return throwError(msg);
-  // }
+    addUserLogin(data:any):Observable<any>{
+      return this.httpClient.post(`${environment.apiUrl}/auth/AddUser`,data)
+    }
 }

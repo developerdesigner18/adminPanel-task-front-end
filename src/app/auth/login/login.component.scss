@@ -35,3 +35,11 @@
   display: flex;
   margin: 0 auto;
 }
+button.appearance-filled.full-width.size-large.status-primary.shape-rectangle.btn-disabled.nb-transition.full_login_btn {
+  background: #32a2c7;
+  color: white;
+  cursor: pointer;
+}
+button.appearance-filled.full-width.size-large.status-primary.shape-rectangle.btn-disabled.nb-transition.full_login_btn:hover {
+  background-color: #1a5264;
+}

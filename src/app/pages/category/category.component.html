@@ -9,14 +9,14 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Category Name</th>
-      <th scope="col" colspan="2">Action</th>
+      <th scope="col" colspan="2" *ngIf="role !== 'User'">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of datas">
       <th scope="row">{{data.name}}</th>
-      <td><i class='fas fa-trash-alt' style='font-size:20px;color:black;cursor: pointer;' (click)="deletecat(data._id)"></i></td>
-      <td><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:black;cursor: pointer;" (click)="editData(data._id)"></i></td>
+      <td *ngIf="role !== 'User'"><i class='fas fa-trash-alt' style='font-size:20px;color:black;cursor: pointer;' (click)="deletecat(data._id)"></i></td>
+      <td *ngIf="role !== 'User'"><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:black;cursor: pointer;" (click)="editData(data._id)"></i></td>
     </tr>
   </tbody>
 </table>

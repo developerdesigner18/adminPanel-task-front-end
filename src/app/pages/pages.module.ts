@@ -15,6 +15,7 @@ import {
   NbSelectModule,
 } from '@nebular/theme';
 import { ProfileComponent } from './profile/profile.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -34,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
     CategoryComponent,
     ProductComponent,
     ProfileComponent,
+    UserLoginComponent,
   ],
 })
 export class PagesModule {

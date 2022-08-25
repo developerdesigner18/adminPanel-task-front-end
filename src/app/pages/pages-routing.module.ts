@@ -10,6 +10,7 @@ import { LoginComponent } from "./login/login.component";
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 const routes: Routes = [{
   path: '',
@@ -80,6 +81,10 @@ const routes: Routes = [{
     {
       path: 'category',
       component:CategoryComponent
+    },
+    {
+      path: 'userlogin',
+      component:UserLoginComponent
     },
     {
       path: 'product',

@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['pages/iot-dashboard'])
       },
       error:(error)=>{
-        console.log("error",error)
+        console.log("error",error.error.message)
         this.toastrService.danger(error.error.message)
       }
     })

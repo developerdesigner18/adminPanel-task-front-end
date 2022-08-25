@@ -27,6 +27,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'lock-outline',
     link: '/pages/profile',
   },
+  {
+    title: 'User Login',
+    icon: 'lock-outline',
+    link: '/pages/userlogin',
+  }
   // {
   //   title: 'FEATURES',
   //   group: true,

@@ -16,6 +16,7 @@ export class ProductComponent implements OnInit {
   modelClose: boolean = false;
   datas: any;
   id: any;
+  role: any;
   constructor(private fb: FormBuilder,private toastrService: NbToastrService,
     public authService: AuthService,
     public router: Router,) {
@@ -32,6 +33,18 @@ export class ProductComponent implements OnInit {
       });
     }
     ngOnInit(): void {
+      let id = localStorage.getItem("_id")
+      this.authService.getProfileData(id).subscribe({
+        next:(res)=>{
+          this.role = res.data.role
+        },
+        error:(error)=>{
+          console.log("error",error);
+
+        }
+      })
+
+
       this.authService.getAllCategory().subscribe({
         next:(res)=>{
           res.allCategories.map((i:any)=>{

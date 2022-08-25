@@ -5,6 +5,8 @@ import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'ngx-header',
@@ -37,18 +39,34 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
 
   currentTheme = 'default';
+  name: any;
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  // userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private router : Router,
+              public authService: AuthService) {
   }
 
   ngOnInit() {
+    let id = localStorage.getItem("_id")
+    console.log("token",id);
+    this.authService.getProfileData(id).subscribe({
+      next:(res)=>{
+        this.name = res.data.username
+      },
+      error:(error)=>{
+        console.log("error",error);
+
+      }
+    })
+
+
     this.currentTheme = this.themeService.currentTheme;
 
     this.userService.getUsers()
@@ -90,5 +108,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
+  }
+  btnLogout(){
+    localStorage.clear();
+    this.router.navigate(['auth'])
   }
 }

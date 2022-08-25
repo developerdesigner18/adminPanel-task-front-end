@@ -11,7 +11,7 @@
       <th scope="col">Product Name</th>
       <th scope="col">Price</th>
       <th scope="col">Category</th>
-      <th scope="col" colspan="2">Action</th>
+      <th scope="col" colspan="2" *ngIf="role !== 'User'">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -19,8 +19,8 @@
       <th scope="row">{{data.name}}</th>
       <th scope="row">{{data.price}}</th>
       <th scope="row">{{data.category}}</th>
-      <td><i class='fas fa-trash-alt' style='font-size:20px;color:black' (click)="deleteproduct(data._id)"></i></td>
-      <td><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:black" (click)="editData(data._id)"></i></td>
+      <td *ngIf="role !== 'User'"><i class='fas fa-trash-alt' style='font-size:20px;color:black' (click)="deleteproduct(data._id)"></i></td>
+      <td *ngIf="role !== 'User'"><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:black" (click)="editData(data._id)"></i></td>
     </tr>
   </tbody>
 </table>
