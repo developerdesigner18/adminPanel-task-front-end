@@ -1,0 +1,29 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  // text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #e1f4fa;
+}
+thead {
+  background: #32a2c7;
+  color: white;
+  height: 3.5rem;
+  font-weight: 600;
+}
+tbody{
+  height: 12rem !important;
+  font-size: 16px;
+  color: gray;
+  font-weight: 600;
+}

@@ -6,7 +6,7 @@
 </div>
 
 <table class="table table-bordered cat_table">
-  <thead class="thead-dark">
+  <thead>
     <tr>
       <th scope="col">Category Name</th>
       <th scope="col" colspan="2" *ngIf="role !== 'User'">Action</th>
@@ -15,8 +15,8 @@
   <tbody>
     <tr *ngFor="let data of datas">
       <th scope="row">{{data.name}}</th>
-      <td *ngIf="role !== 'User'"><i class='fas fa-trash-alt' style='font-size:20px;color:black;cursor: pointer;' (click)="deletecat(data._id)"></i></td>
-      <td *ngIf="role !== 'User'"><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:black;cursor: pointer;" (click)="editData(data._id)"></i></td>
+      <td *ngIf="role !== 'User'"><i class='fas fa-trash-alt' style='font-size:20px;color:darkslategray;cursor: pointer;' (click)="deletecat(data._id)"></i></td>
+      <td *ngIf="role !== 'User'"><i class="fa fa-edit"  data-toggle="modal" data-target="#exampleModal1"  style="font-size:20px;color:darkslategray;cursor: pointer;" (click)="editData(data._id)"></i></td>
     </tr>
   </tbody>
 </table>
@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Save</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>

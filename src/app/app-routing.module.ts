@@ -10,7 +10,7 @@ import {
 } from '@nebular/auth';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from "./auth/register/register.component";
-
+import { AuthGuardGuard } from "./auth-guard.guard";
 export const routes: Routes = [
   {
     path: 'pages',
@@ -28,6 +28,7 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+        canActivate: [AuthGuardGuard]
       },
       {
         path: 'register',

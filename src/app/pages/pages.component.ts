@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MENU_ITEMS } from './pages-menu';
+import { MENU_ITEMS, getMenu } from './pages-menu';
 
 @Component({
   selector: 'ngx-pages',
@@ -12,7 +12,7 @@ import { MENU_ITEMS } from './pages-menu';
     </ngx-one-column-layout>
   `,
 })
-export class PagesComponent {
 
-  menu = MENU_ITEMS;
+export class PagesComponent {
+  menu = getMenu(localStorage.getItem("role"));
 }

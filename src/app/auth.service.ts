@@ -86,4 +86,8 @@ export class AuthService {
     addUserLogin(data:any):Observable<any>{
       return this.httpClient.post(`${environment.apiUrl}/auth/AddUser`,data)
     }
+
+    getAllUsers():Observable<any>{
+      return this.httpClient.get(`${environment.apiUrl}/auth/getAllUsers`)
+    }
 }

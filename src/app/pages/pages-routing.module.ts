@@ -11,7 +11,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserLoginComponent } from './user-login/user-login.component';
-
+import { UsersListComponent } from './users-list/users-list.component';
+import {AuthGuardGuard  } from "../auth-guard.guard";
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -80,11 +81,16 @@ const routes: Routes = [{
     },
     {
       path: 'category',
-      component:CategoryComponent
+      component:CategoryComponent,
+      canActivate: [AuthGuardGuard]
     },
     {
       path: 'userlogin',
       component:UserLoginComponent
+    },
+    {
+      path: 'users',
+      component:UsersListComponent
     },
     {
       path: 'product',

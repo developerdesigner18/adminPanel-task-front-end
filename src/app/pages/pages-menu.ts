@@ -1,5 +1,5 @@
 import { NbMenuItem } from '@nebular/theme';
-
+const role = localStorage.getItem('role')
 export const MENU_ITEMS: NbMenuItem[] = [
   // {
   //   title: 'E-commerce',
@@ -11,26 +11,37 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'IoT Dashboard',
     icon: 'home-outline',
     link: '/pages/iot-dashboard',
+    hidden: false
   },
   {
     title: 'Categories',
-    icon: 'lock-outline',
+    icon: 'clipboard',
     link: '/pages/category',
+    hidden: false
   },
   {
     title: 'Products',
-    icon: 'lock-outline',
+    icon: 'briefcase',
     link: '/pages/product',
+    hidden: false
   },
   {
     title: 'Profile',
-    icon: 'lock-outline',
+    icon: 'star',
     link: '/pages/profile',
+    hidden: false
   },
   {
     title: 'User Login',
-    icon: 'lock-outline',
+    icon: 'log-in',
     link: '/pages/userlogin',
+    hidden: role === 'AdminUser' ? false : true
+  },
+  {
+    title: 'Users List',
+    icon: 'folder',
+    link: '/pages/users',
+    hidden: role === 'AdminUser' ? false : true
   }
   // {
   //   title: 'FEATURES',
@@ -265,3 +276,45 @@ export const MENU_ITEMS: NbMenuItem[] = [
   //   ],
   // },
 ];
+export function getMenu(role:any) {
+  return [
+    {
+      title: 'IoT Dashboard',
+      icon: 'home-outline',
+      link: '/pages/iot-dashboard',
+      hidden: false
+    },
+    {
+      title: 'Categories',
+      icon: 'clipboard',
+      link: '/pages/category',
+      hidden: false
+    },
+    {
+      title: 'Products',
+      icon: 'briefcase',
+      link: '/pages/product',
+      hidden: false
+    },
+    {
+      title: 'Profile',
+      icon: 'star',
+      link: '/pages/profile',
+      hidden: false
+    },
+    {
+      title: 'User Login',
+      icon: 'log-in',
+      link: '/pages/userlogin',
+      hidden: role === 'AdminUser' ? false : true
+    },
+    {
+      title: 'Users List',
+      icon: 'folder',
+      link: '/pages/users',
+      hidden: role === 'AdminUser' ? false : true
+    }
+
+  ];
+}
+

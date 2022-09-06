@@ -16,6 +16,7 @@ import {
 } from '@nebular/theme';
 import { ProfileComponent } from './profile/profile.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { UsersListComponent } from './users-list/users-list.component';
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -36,6 +37,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
     ProductComponent,
     ProfileComponent,
     UserLoginComponent,
+    UsersListComponent,
   ],
 })
 export class PagesModule {

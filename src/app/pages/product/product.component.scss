@@ -4,7 +4,7 @@
 .btnAddCat {
   margin-left: 52rem;
   height: 2.5rem;
-  background: black;
+  background: #32a2c7;
   color: white;
 }
 button.btn.btn-primary {
@@ -21,4 +21,9 @@ button.btn.btn-secondary {
 select.form-select {
   height: 2.5rem;
   width: 29rem;
+}
+.cat_table thead {
+  color: #fff;
+  background-color: #32a2c7 !important;
+  border-color: #454d55;
 }

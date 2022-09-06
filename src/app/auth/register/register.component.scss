@@ -9,3 +9,12 @@ button.appearance-filled.full-width.size-large.status-primary.shape-rectangle.bt
 button.appearance-filled.full-width.size-large.status-primary.shape-rectangle.btn-disabled.nb-transition.full_login_btn:hover{
 background-color: #1a5264;
 }
+span.text.remember_text {
+  font-family: Open Sans, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  position: absolute;
+  margin-left: 415px;
+  margin-top: -10px;
+}

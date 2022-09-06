@@ -51,8 +51,11 @@ export class LoginComponent implements OnInit {
         console.log("res",res)
         localStorage.setItem('token',res.token)
         localStorage.setItem('_id',res.username_id)
+        localStorage.setItem('role',res.role)
         this.toastrService.success(res.massage)
-        this.router.navigate(['pages/iot-dashboard'])
+        setTimeout(() => {
+          this.router.navigate(['pages/iot-dashboard'])
+        },2000);
       },
       error:(error)=>{
         console.log("error",error.error.message)
